@@ -47,6 +47,7 @@ export default defineComponent({
   },
   setup: () => {
     const count = ref(0);
+    // const a = 'dfsdfsd';
     return { count };
   },
 });
