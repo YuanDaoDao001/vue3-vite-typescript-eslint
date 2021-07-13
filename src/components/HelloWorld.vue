@@ -32,6 +32,8 @@
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
+  <el-button type="primary" icon="el-icon-eleme">测试Element-plus</el-button>
+  <el-date-picker></el-date-picker>
 </template>
 
 <script lang="ts">
@@ -53,20 +55,17 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-a {
-  color: #42b983;
-}
+<style scoped lang="sass">
+a
+  color: $primary
 
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
-}
+label
+  margin: 0 0.5em
+  font-weight: bold
 
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
-}
+code
+  background-color: #eee
+  padding: 2px 4px
+  border-radius: 4px
+  color: #304455
 </style>
