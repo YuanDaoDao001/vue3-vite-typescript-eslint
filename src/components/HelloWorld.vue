@@ -32,12 +32,18 @@
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
-  <el-button type="primary" icon="el-icon-eleme">测试Element-plus</el-button>
+  <el-button icon="el-icon-eleme" type="primary" @click="increment"
+    >测试Element-plus</el-button
+  >
   <el-date-picker></el-date-picker>
+  <p>vuex-module：{{ count1 }}</p>
+  <p>vuex-module2：{{ count2 }}</p>
+  <p>vuex-module-getters: {{ moduleGetters }}</p>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue';
+import { ref, defineComponent, computed } from 'vue';
+import { useStore } from '../store/index';
 
 export default defineComponent({
   name: 'HelloWorld',
@@ -48,9 +54,17 @@ export default defineComponent({
     },
   },
   setup: () => {
+    const store = useStore();
     const count = ref(0);
     // var a = 'dfsdfsd';
-    return { count };
+    return {
+      count,
+      rootCount: computed(() => store.state.rootCount),
+      count1: computed(() => store.state.module.count),
+      count2: computed(() => store.state.module2.count),
+      moduleGetters: computed(() => store.getters.getCount),
+      increment: () => store.commit('increment'),
+    };
   },
 });
 </script>

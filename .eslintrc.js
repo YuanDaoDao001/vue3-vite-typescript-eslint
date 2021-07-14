@@ -10,13 +10,21 @@ module.exports = {
     'airbnb-base',
     'plugin:prettier/recommended',
   ],
-  plugins: ['prettier'],
+  plugins: ['@typescript-eslint', 'prettier'],
   parserOptions: {
     ecmaVersion: 12,
     parser: '@typescript-eslint/parser',
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
   rules: {
     'prettier/prettier': 'error',
+    'linebreak-style': 0,
     'import/no-extraneous-dependencies': [
       'error',
       {
@@ -43,6 +51,36 @@ module.exports = {
           '**@vitejs**',
         ],
         optionalDependencies: false,
+      },
+    ],
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: [
+          'acc', // for reduce accumulators
+          'accumulator', // for reduce accumulators
+          'e', // for e.returnvalue
+          'ctx', // for Koa routing
+          'context', // for Koa routing
+          'req', // for Express requests
+          'request', // for Express requests
+          'res', // for Express responses
+          'response', // for Express responses
+          '$scope', // for Angular 1 scopes
+          'staticContext', // for ReactRouter context
+          'state', // for vuex state
+        ],
+      },
+    ],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        mjs: 'never',
+        jsx: 'never',
+        ts: 'never',
       },
     ],
   },
