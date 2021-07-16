@@ -10,16 +10,21 @@ module.exports = {
     'airbnb-base',
     'plugin:prettier/recommended',
   ],
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['vue', '@typescript-eslint', 'prettier'],
   parserOptions: {
     ecmaVersion: 12,
     parser: '@typescript-eslint/parser',
+    sourceType: 'module',
   },
   settings: {
     'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      alias: {
+        map: [['@', './src']],
+        extensions: ['.mjs', '.js', '.json', '.ts', '.jsx'],
       },
+      // node: {
+      //   extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      // },
     },
   },
   rules: {

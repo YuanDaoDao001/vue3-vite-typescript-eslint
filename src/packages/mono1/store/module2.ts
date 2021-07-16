@@ -17,7 +17,6 @@ export default {
   },
   getters: {
     getCount2(state, getters, rootState) {
-      console.log(rootState);
       return `${state.count}---=${rootState.module.count}`;
     },
   },
